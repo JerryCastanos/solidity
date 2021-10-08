@@ -21,6 +21,8 @@
 
 #pragma once
 
+#include <fmt/format.h>
+
 #include <unordered_map>
 #include <memory>
 #include <vector>
@@ -166,6 +168,26 @@ inline YulString operator "" _yulstring(char const* _string, std::size_t _size)
 }
 
 }
+
+namespace fmt
+{
+template <>
+struct formatter<solidity::yul::YulString>
+{
+	template <typename ParseContext>
+	constexpr auto parse(ParseContext& ctx)
+	{
+		return ctx.begin();
+	}
+
+	template <typename FormatContext>
+	auto format(solidity::yul::YulString _value, FormatContext& _ctx)
+	{
+		return format_to(_ctx.out(), "{}", _value.str());
+	}
+};
+}
+
 namespace std
 {
 template<> struct hash<solidity::yul::YulString>
