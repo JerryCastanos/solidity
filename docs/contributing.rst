@@ -94,7 +94,7 @@ in the project top level. The required file is called ``libevmone.so`` on Linux
 systems, ``evmone.dll`` on Windows systems and ``libevmone.dylib`` on macOS.
 
 The dependent libraries (such as ``evmone.so`` / ``evmone.dll``) will be loaded
-automatically if they are placed in the directory behind the environment variable ``$ETH_EVMONE``,
+automatically if they are placed in the directory specified in the environment variable ``$ETH_EVMONE``,
 ``deps``, or ``deps/lib`` relative to the current working directory and three levels up.
 
 On macOS some of the testing scripts expect GNU coreutils to be installed.
